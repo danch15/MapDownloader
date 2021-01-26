@@ -49,7 +49,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;MONO_disabled; MySQL_disabled; PostgreSQL_disabled; SQLite</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;MONO_disabled; MySQL_disabled; PostgreSQL_disabled; SQLite; NET40;</DefineConstants>
     <DebugType>Full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisLogFile>bin\x86\Debug\GMap.NET.Core.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
@@ -64,9 +64,9 @@
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE;MONO_disabled; MySQL_disabled; PostgreSQL_disabled; SQLite</DefineConstants>
+    <DefineConstants>TRACE;MONO_disabled; MySQL_disabled; PostgreSQL_disabled; SQLite; NET40</DefineConstants>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisLogFile>bin\x86\Release\GMap.NET.Core.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
     <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
@@ -135,35 +135,6 @@
   <PropertyGroup Condition=" '$(TargetFrameworkVersion)' == 'v5.0' ">
     <TargetFrameworkVersionNumber>5.0</TargetFrameworkVersionNumber>
   </PropertyGroup>
-  <Choose>
-    <When Condition=" '$(TargetFrameworkVersionNumber)' &gt;= '4.0' " />
-    <Otherwise>
-      <ItemGroup>
-        <Reference Include="Mono.Data.Sqlite">
-          <HintPath>..\References\Windows\Mono.Data.Sqlite.dll</HintPath>
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="System.Data.SQLite">
-          <HintPath>..\References\Windows\System.Data.SQLite.DLL</HintPath>
-          <SpecificVersion>False</SpecificVersion>
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="Npgsql">
-          <HintPath>..\References\Windows\Npgsql.dll</HintPath>
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="Mono.Security">
-          <HintPath>..\References\Windows\Mono.Security.dll</HintPath>
-          <Private>False</Private>
-        </Reference>
-        <Reference Include="MySql.Data">
-          <HintPath>..\References\Windows\MySql.Data.dll</HintPath>
-          <SpecificVersion>False</SpecificVersion>
-          <Private>False</Private>
-        </Reference>
-      </ItemGroup>
-    </Otherwise>
-  </Choose>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net40\EntityFramework.dll</HintPath>
