@@ -338,6 +338,11 @@
       public FormattedText EmptyTileText = new FormattedText("We are sorry, but we don't\nhave imagery at this zoom\n     level for this region.", System.Globalization.CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, new Typeface("Arial"), 16, Brushes.Blue);
 
       /// <summary>
+      /// 显示异常信息（如本地缓存数据库中不存在图片等）
+      /// </summary>
+      public bool ShowEmptyTileTitle { get; set; } = true;
+
+      /// <summary>
       /// map zooming type for mouse wheel
       /// </summary>
       [Category("GMap.NET")]
@@ -980,11 +985,14 @@
                         {
                            g.DrawRectangle(EmptytileBrush, EmptyTileBorders, new Rect(Core.tileRect.X, Core.tileRect.Y, Core.tileRect.Width, Core.tileRect.Height));
 
-                           var ex = Core.FailedLoads[lt];
-                           FormattedText TileText = new FormattedText("Exception: " + ex.Message, System.Globalization.CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, tileTypeface, 14, Brushes.Red);
-                           TileText.MaxTextWidth = Core.tileRect.Width - 11;
+                           if (ShowEmptyTileTitle)
+                           {
+                               var ex = Core.FailedLoads[lt];
+                               FormattedText TileText = new FormattedText("Exception: " + ex.Message, System.Globalization.CultureInfo.CurrentUICulture, FlowDirection.LeftToRight, tileTypeface, 14, Brushes.Red);
+                               TileText.MaxTextWidth = Core.tileRect.Width - 11;
 
-                           g.DrawText(TileText, new System.Windows.Point(Core.tileRect.X + 11, Core.tileRect.Y + 11));
+                               g.DrawText(TileText, new System.Windows.Point(Core.tileRect.X + 11, Core.tileRect.Y + 11));
+                           }
 
                            g.DrawText(EmptyTileText, new System.Windows.Point(Core.tileRect.X + Core.tileRect.Width / 2 - EmptyTileText.Width / 2, Core.tileRect.Y + Core.tileRect.Height / 2 - EmptyTileText.Height / 2));
                         }
