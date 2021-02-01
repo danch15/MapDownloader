@@ -51,7 +51,7 @@ namespace GMapDownload
             this.textBoxTopLeftLng.Text = this.rectLatLng.LocationTopLeft.Lng.ToString();
 
             this.mapProvider.MinZoom = 1;
-            this.mapProvider.MaxZoom = 18;
+            this.mapProvider.MaxZoom = 19;
 
             this.buttonOK.Enabled = false;
         }

@@ -20,8 +20,10 @@ namespace GMapProvidersExt.Baidu
         // Methods
         static BaiduMapProviderBase()
         {
-            maxServer = 9;
-            UrlFormat = "http://online{0}.map.bdimg.com/tile/?qt=tile&x={1}&y={2}&z={3}&styles=pl&udt=20150213";
+            //maxServer = 9;
+            //UrlFormat = "http://online{0}.map.bdimg.com/tile/?qt=tile&x={1}&y={2}&z={3}&styles=pl&udt=20150213";
+            maxServer = 4;
+            UrlFormat = "https://maponline{0}.bdimg.com/tile/?qt=vtile&x={1}&y={2}&z={3}&styles=pl&udt=20210128&scaler=1&showtext=1";
             init = false;
         }
 
